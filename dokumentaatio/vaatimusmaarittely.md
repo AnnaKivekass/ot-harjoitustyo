@@ -1,3 +1,3 @@
 # Juoksutreenien seurantaan tarkoitettu sovellus
 
-##Vaatimusmäärittely
+Vaatimusmäärittely
