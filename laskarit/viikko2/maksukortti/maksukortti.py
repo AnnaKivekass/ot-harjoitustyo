@@ -16,6 +16,12 @@ class Maksukortti:
             if self.saldo > 15000:
                 self.saldo = 15000
 
+    def ota_rahaa(self, maara):
+        if maara <= self.saldo:
+            self.saldo -= maara
+            return True
+        return False
+
     def saldo_euroina(self):
         return self.saldo / 100
 
