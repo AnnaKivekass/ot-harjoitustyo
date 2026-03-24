@@ -7,4 +7,4 @@ Teen harjoitustyönä **sovelluksen juoksutreenien seurantaan**, jonka avulla vo
 
 ## Laskarit
 
-- [Viikko 1](laskarit/viikko1.md)
+- [Laskarit](laskarit)
