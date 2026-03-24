@@ -1,52 +1,35 @@
+import unittest
 from maksukortti import Maksukortti
 
-def test_saldo_alussa():
-    kortti = Maksukortti(1000)
-    assert kortti.saldo == 1000
+class TestMaksukortti(unittest.TestCase):
 
-def test_lataaminen():
-    kortti = Maksukortti(1000)
-    kortti.lataa_rahaa(500)
-    assert kortti.saldo == 1500
+    def setUp(self):
+        self.kortti = Maksukortti(1000)
 
-def test_saldo_vahenee():
-    kortti = Maksukortti(1000)
-    onnistui = kortti.ota_rahaa(200)
+    def test_konstruktori_asettaa_saldon_oikein(self):
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 10.00 euroa")
 
-    assert onnistui is True
-    assert kortti.saldo == 800
+    def test_syo_edullisesti_vahentaa_saldoa_oikein(self):
+        self.kortti.syo_edullisesti()
+        self.assertEqual(self.kortti.saldo_euroina(), 7.5)
 
-def test_saldo_ei_muutu():
-    kortti = Maksukortti(1000)
-    onnistui = kortti.ota_rahaa(2000)
+    def test_syo_maukkaasti_vahentaa_saldoa_oikein(self):
+        self.kortti.syo_maukkaasti()
+        self.assertEqual(self.kortti.saldo_euroina(), 6.0)
 
-    assert onnistui is False
-    assert kortti.saldo == 1000
+    def test_syo_edullisesti_ei_vie_saldoa_negatiiviseksi(self):
+        kortti = Maksukortti(200)
+        kortti.syo_edullisesti()
+        self.assertEqual(kortti.saldo_euroina(), 2.0)
 
-def test_negatiivinen_lataus():
-    kortti = Maksukortti(1000)
-    kortti.lataa_rahaa(-100)
-    assert kortti.saldo == 1000
+    def test_kortille_voi_ladata_rahaa(self):
+        self.kortti.lataa_rahaa(2500)
+        self.assertEqual(self.kortti.saldo_euroina(), 35.0)
 
-def test_saldoei_maksimi():
-    kortti = Maksukortti(14000)
-    kortti.lataa_rahaa(2000)
-    assert kortti.saldo == 15000
+    def test_kortin_saldo_ei_ylita_maksimiarvoa(self):
+        self.kortti.lataa_rahaa(20000)
+        self.assertEqual(self.kortti.saldo_euroina(), 150.0)
 
-def test_syo_edullisesti():
-    kortti = Maksukortti(1000)
-    kortti.syo_edullisesti()
-
-    assert kortti.saldo == 760
-
-def test_syo_edullisesti_ei_onnistu():
-    kortti = Maksukortti(100)
-    kortti.syo_edullisesti()
-
-    assert kortti.saldo == 100
-
-def test_syo_maukkaasti_ei_onnistu():
-    kortti = Maksukortti(100)
-    kortti.syo_maukkaasti()
-
-    assert kortti.saldo == 100
+    def test_negatiivinen_lataus_ei_muuta_saldoa(self):
+        self.kortti.lataa_rahaa(-500)
+        self.assertEqual(self.kortti.saldo_euroina(), 10.0)

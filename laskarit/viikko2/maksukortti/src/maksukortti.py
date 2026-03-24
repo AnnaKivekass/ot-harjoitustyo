@@ -3,8 +3,8 @@ class Maksukortti:
         self.saldo = saldo
 
     def syo_edullisesti(self):
-        if self.saldo >= 240:
-            self.saldo -= 240
+        if self.saldo >= 250:
+            self.saldo -= 250
 
     def syo_maukkaasti(self):
         if self.saldo >= 400:
