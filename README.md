@@ -8,6 +8,3 @@ Teen harjoitustyönä **sovelluksen juoksutreenien seurantaan**, jonka avulla vo
 - [Changelog](dokumentaatio/changelog.md)
 
 
-## Laskarit
-
-- [Laskarit](laskarit)
