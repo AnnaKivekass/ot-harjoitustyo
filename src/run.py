@@ -25,3 +25,26 @@ class RunApp:
             return True
         return False
 
+    def distance_total(self):
+        return sum(run.distance for run in self.runs)
+    
+    def average_pace(self):
+        if not self.runs:
+            return 0
+        
+        distance_total= sum(run.distance for run in self.runs)
+        minutes_total = sum(run.minutes for run in self.runs)
+
+        return minutes_total / self.distance_total()
+    
+    def longest_run(self):
+        if not self.runs:
+            return None
+        
+        longest = self.runs[0]
+
+        for run in self.runs:
+            if run.distance >longest.distance:
+                longest = run
+
+        return longest
