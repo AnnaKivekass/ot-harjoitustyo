@@ -4,6 +4,7 @@ Teen harjoitustyönä **sovelluksen juoksutreenien seurantaan**, jonka avulla vo
 
 ## Dokumentaatio
 - [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito] (tuntikirjanpito.md)
 
 ## Laskarit
 
