@@ -6,7 +6,9 @@ class Run:
 
     def pace(self):
         return self.minutes / self.distance
-
+    
+    def speed(self):
+        return self.distance / (self.minutes / 60)
 
 class RunApp:
     def __init__(self):
@@ -48,3 +50,11 @@ class RunApp:
                 longest = run
 
         return longest
+    
+    def average_distance(self):
+        if not self.runs:
+            return 0
+        return self.distance_total() / len(self.runs)
+    
+    def find_date(self, date):
+        return[run for run in self.runs if run.date == date]
