@@ -4,7 +4,7 @@ Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
 
-Sovellusksen avulla käyttäjä voi pitää kirjaa omista juoksulenkeistään. Sovelluksen avulla käyttäjä voi tallentaa juoksutietoja sekä tarkastella ja analysoida omia harjoituksiaan.
+Sovelluksen avulla käyttäjä voi pitää kirjaa omista juoksulenkeistään. Sovelluksen avulla käyttäjä voi tallentaa juoksutietoja sekä tarkastella ja analysoida omia harjoituksiaan.
 
 ## Käyttäjät
 
@@ -16,16 +16,19 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 
 ### Perusversion toiminnallisuudet
 
-- käyttäjä voi lisätä uuden juoksusuorituksen  
-- käyttäjä voi tarkastella tallennettuja juoksusuorituksia listana  
-- käyttäjä voi poistaa juoksusuorituksen  
-- käyttäjä voi tallentaa juoksusuorituksesta matkan ja ajan  
+- käyttäjä voi lisätä uuden juoksusuorituksen  [tehty]
+- käyttäjä voi tarkastella tallennettuja suorituksia listana  [tehty]
+- käyttäjä voi poistaa juoksusuorituksen  [tehty]
+- käyttäjä voi tallentaa juoksusuorituksesta matkan ja ajan  [tehty]
+
+### Lisätyt toiminnallisuudet
+
+- juoksusuorituksen vauhdin (min/km) laskeminen  [tehty]
+- kokonaismatkan laskeminen  [tehty]
+- keskimääräisen vauhdin laskeminen  [tehty]
+- pisimmän juoksusuorituksen näyttäminen  [tehty]
+- suoritusten tarkastelu päivämäärän perusteella  [tehty]
 
 ### Jatkokehitysideat
 
-- juoksusuorituksen vauhdin (min/km) laskeminen  
-- kokonaismatkan laskeminen  
-- keskimääräisen vauhdin laskeminen  
-- pisimmän juoksusuorituksen näyttäminen  
-- suoritusten tarkastelu päivämäärän perusteella  
 - käyttöliittymän kehittäminen graafiseksi  

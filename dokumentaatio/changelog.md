@@ -6,6 +6,11 @@
 
 ## Viikko 4
 
+- Lisätty juoksunopeuden (km/h) laskeminen
+- Lisätty keskimääräisen matkan laskeminen
+- Lisätty juoksujen haku päivämäärän perusteella
+- Parannettu käyttöliittymän tulostusta selkeämmäksi
+
 
 ## Viikko 5
 
