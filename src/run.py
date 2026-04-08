@@ -1,3 +1,5 @@
+from database.runs import add_run, get_runs, delete_run
+
 class Run:
     def __init__(self, distance, minutes, date):
         self.distance = distance
@@ -10,51 +12,57 @@ class Run:
     def speed(self):
         return self.distance / (self.minutes / 60)
 
+
 class RunApp:
     def __init__(self):
-        self.runs = []
+        pass
 
     def add_run(self, distance, minutes, date):
-        run = Run(distance, minutes, date)
-        self.runs.append(run)
+        add_run(distance, minutes, date)
 
     def list_runs(self):
-        return self.runs
+        rows = get_runs()
+        return [
+            Run(row["distance"], row["minutes"], row["date"])
+            for row in rows
+        ]
 
     def delete_run(self, index):
-        if 0 <= index < len(self.runs):
-            self.runs.pop(index)
-            return True
-        return False
+        delete_run(index)
 
     def distance_total(self):
-        return sum(run.distance for run in self.runs)
+        runs_list = self.list_runs()
+        return sum(run.distance for run in runs_list)
     
     def average_pace(self):
-        if not self.runs:
+        runs_list = self.list_runs()
+        if not runs_list:
             return 0
         
-        distance_total= sum(run.distance for run in self.runs)
-        minutes_total = sum(run.minutes for run in self.runs)
+        distance_total = sum(run.distance for run in runs_list)
+        minutes_total = sum(run.minutes for run in runs_list)
 
-        return minutes_total / self.distance_total()
+        return minutes_total / distance_total
     
     def longest_run(self):
-        if not self.runs:
+        runs_list = self.list_runs()
+        if not runs_list:
             return None
         
-        longest = self.runs[0]
+        longest = runs_list[0]
 
-        for run in self.runs:
-            if run.distance >longest.distance:
+        for run in runs_list:
+            if run.distance > longest.distance:
                 longest = run
 
         return longest
     
     def average_distance(self):
-        if not self.runs:
+        runs_list = self.list_runs()
+        if not runs_list:
             return 0
-        return self.distance_total() / len(self.runs)
+        return self.distance_total() / len(runs_list)
     
     def find_date(self, date):
-        return[run for run in self.runs if run.date == date]
+        runs_list = self.list_runs()
+        return [run for run in runs_list if run.date == date]

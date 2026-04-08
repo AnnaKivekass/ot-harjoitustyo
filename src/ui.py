@@ -1,4 +1,7 @@
 from run import RunApp
+from database.connection import init_db
+
+init_db()
 
 app = RunApp()
 
