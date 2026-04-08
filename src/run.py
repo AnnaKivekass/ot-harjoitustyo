@@ -29,6 +29,7 @@ class RunApp:
 
     def delete_run(self, index):
         delete_run(index)
+        return True
 
     def distance_total(self):
         runs_list = self.list_runs()
