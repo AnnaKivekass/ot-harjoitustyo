@@ -1,7 +1,11 @@
 [run]
 source = src
+omit =
+    src/tests/*
+    src/ui.py
+    src/**/__init__.py
 
 [report]
 omit =
-    src/ui.py
     src/tests/*
+    src/ui.py
