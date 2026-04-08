@@ -1,9 +1,12 @@
 from invoke import task
 
-
 @task
 def start(ctx):
     ctx.run("python3 src/ui.py", pty=True)
+
+@task
+def gui(ctx):
+    ctx.run("PYTHONPATH=src python3 src/gui.py", pty=True)
 
 
 @task
@@ -23,3 +26,4 @@ def coverage_report(ctx):
 @task
 def pylint(ctx):
     ctx.run("pylint src/run.py src/database", pty=True)
+
