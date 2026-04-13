@@ -32,6 +32,7 @@ class RunGUI:
 
         tk.Button(root, text="Longest Run", command=self.longest_run).grid(row=5, column=0)
         tk.Button(root, text="Average Distance", command=self.average_distance).grid(row=5, column=1)
+        tk.Button(root, text="Fastest Run", command=self.fastest_run).grid(row=5, column=2)
 
         tk.Button(root, text="Search by Date", command=self.search_by_date).grid(row=6, column=0, columnspan=2)
 
@@ -51,7 +52,9 @@ class RunGUI:
 
             self.app.add_run(distance, minutes, date)
             self.refresh_list()
-        except:
+            self.clear_fields()
+
+        except ValueError:
             messagebox.showerror("Error", "Invalid input")
 
     def delete_run(self):
@@ -104,8 +107,21 @@ class RunGUI:
             )
             self.listbox.insert(tk.END, text)
 
+    def fastest_run(self):
+        run = self.app.fastest_run()
+        if run:
+            self.result_label.config(
+                text=f"Fastest run: {run.distance} km, {run.minutes} min, {run.date}, pace {round(run.pace(), 2)} min/km"
+            )
+        else:
+            self.result_label.config(text="No runs found")
 
 
+    def clear_fields(self):
+        self.distance_entry.delete(0, tk.END)
+        self.minutes_entry.delete(0, tk.END)
+        self.date_entry.delete(0, tk.END)
+        
 def main():
     init_db()
     root = tk.Tk()

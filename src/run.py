@@ -69,6 +69,20 @@ class RunApp:
 
         return longest
 
+    def fastest_run(self):
+        """return run with fastest pace"""
+        runs_list = self.list_runs()
+        if not runs_list:
+            return None
+
+        fastest = runs_list[0]
+
+        for run in runs_list:
+            if run.pace() < fastest.pace():
+                fastest = run
+
+        return fastest
+
     def average_distance(self):
         """return average distance"""
         runs_list = self.list_runs()
