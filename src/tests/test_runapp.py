@@ -32,6 +32,7 @@ class TestRunApp(unittest.TestCase):
         runs = self.app.list_runs()
         self.assertEqual(len(runs), 0)
 
+
     def test_distance_total(self):
         self.app.add_run(5, 30, "26.3")
         self.assertEqual(self.app.distance_total(), 5)
@@ -50,4 +51,34 @@ class TestRunApp(unittest.TestCase):
 
         self.assertEqual(self.app.distance_total(), 36)
 
+    def test_average_pace(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "13.4.2026")
+
+        self.assertEqual(self.app.average_pace(), 6)
+
+    def test_average_pace_no_runs(self):
+        self.assertEqual(self.app.average_pace(), 0)
+
+    def test_longest_run(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "13.4.2026")
+
+        longest = self.app.longest_run()
+        self.assertEqual(longest.distance, 10)
+
+    def test_fastest_run(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 20, "13.4.2026")
+
+        fastest = self.app.fastest_run()
+        self.assertEqual(fastest.distance, 5)             
+                    
+    def test_search_by_date(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "13.4.2026")
+        self.app.add_run(15, 90, "26.3.2026")
+
+        runs = self.app.find_date("26.3.2026")
+        self.assertEqual(len(runs), 2)
         
