@@ -27,8 +27,11 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - kokonaismatkan laskeminen  [tehty]
 - keskimääräisen vauhdin laskeminen  [tehty]
 - pisimmän juoksusuorituksen näyttäminen  [tehty]
+- nopeimman juoksusuorituksen näyttäminen [tehty]
 - suoritusten tarkastelu päivämäärän perusteella  [tehty]
+- keskimääräisen matkan laskeminen [tehty]
+- päivämäärällä voi hakea juoksusuoritusta [tehty]
 
 ### Jatkokehitysideat
 
-- käyttöliittymän kehittäminen graafiseksi  
+- käyttöliittymän kehittäminen graafiseksi [tehty]

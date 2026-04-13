@@ -22,6 +22,7 @@
 - Lisätty arkkitehtuurikuva sovelluksen rakenteesta
 
 ## Viikko 5
-
+- Lisätty lisää testejä run.py toiminnallisuuden testaamiseksi
+- Lisätty syöttökenttien tyhjennys
 
 ## Viikko 6
