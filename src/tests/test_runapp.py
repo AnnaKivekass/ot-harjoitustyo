@@ -31,3 +31,23 @@ class TestRunApp(unittest.TestCase):
 
         runs = self.app.list_runs()
         self.assertEqual(len(runs), 0)
+
+    def test_distance_total(self):
+        self.app.add_run(5, 30, "26.3")
+        self.assertEqual(self.app.distance_total(), 5)
+
+    def test_distance_total_two_runs(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(15, 90, "8.4.2026")
+
+        self.assertEqual(self.app.distance_total(), 25)
+
+    def test_distance_total_many_runs(self):
+        self.app.add_run(1, 6, "26.3.2026")
+        self.app.add_run(5, 30, "13.4.2026")
+        self.app.add_run(10, 60, "12.4.2026")
+        self.app.add_run(20, 120, "10.4.2026")    
+
+        self.assertEqual(self.app.distance_total(), 36)
+
+        
