@@ -2,11 +2,7 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("python3 src/ui.py", pty=True)
-
-@task
-def gui(ctx):
-    ctx.run("PYTHONPATH=src python3 src/gui.py", pty=True)
+    ctx.run("python3 src/gui.py", pty=True)
 
 
 @task
