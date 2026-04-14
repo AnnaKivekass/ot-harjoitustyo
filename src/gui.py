@@ -51,6 +51,7 @@ class RunGUI:
 
         self.listbox = tk.Listbox(root, width=60)
         self.listbox.grid(row=8, column=0, columnspan=4, padx=5, pady=5)
+        self.listbox.bind("<<ListboxSelect>>", self.show_details)
 
         scrollbar = tk.Scrollbar(root)
         scrollbar.grid(row=8, column=4, sticky="ns")
@@ -190,6 +191,30 @@ class RunGUI:
             text = f"{run['distance']} km, {run['minutes']} min, {run['date']}"
             self.listbox.insert(tk.END, text)
 
+    def show_details(self, event):
+        selection = self.listbox.curselection()
+        if not selection:
+            return
+
+        index = selection[0]
+        run = self.runs[index]
+
+        distance = run["distance"]
+        minutes = run["minutes"]
+        date = run["date"]
+
+        pace = minutes / distance
+        speed = distance / (minutes / 60)
+
+        window = tk.Toplevel()
+        window.title("Run details")
+
+        tk.Label(window, text=f"Date: {date}").pack(pady=5)
+        tk.Label(window, text=f"Distance: {distance} km").pack(pady=5)
+        tk.Label(window, text=f"Time: {minutes} min").pack(pady=5)
+        tk.Label(window, text=f"Pace: {round(pace, 2)} min/km").pack(pady=5)
+        tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
+
     def show_graph(self):
         runs = get_runs()
 
@@ -243,4 +268,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() 
