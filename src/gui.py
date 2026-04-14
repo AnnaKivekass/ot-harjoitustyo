@@ -51,7 +51,7 @@ class RunGUI:
 
         self.listbox = tk.Listbox(root, width=60)
         self.listbox.grid(row=8, column=0, columnspan=4, padx=5, pady=5)
-        self.listbox.bind("<<ListboxSelect>>", self.show_details)
+        self.listbox.bind("<Double-Button-1>", self.show_details)
 
         scrollbar = tk.Scrollbar(root)
         scrollbar.grid(row=8, column=4, sticky="ns")
@@ -259,6 +259,7 @@ class RunGUI:
 
         plt.title("Run distances (selected highlighted)")
         plt.show()
+
 
 def main():
     init_db()
