@@ -1,14 +1,21 @@
-"""db connection"""
+"""Database connection"""
+
 import sqlite3
+import os
+
 
 def db_connection():
-    """create db connection"""
-    db = sqlite3.connect("runs.db")
+    """Create and return database connection"""
+    base_dir = os.path.dirname(os.path.dirname(__file__))
+    db_path = os.path.join(base_dir, "runs.db")
+
+    db = sqlite3.connect(db_path)
     db.row_factory = sqlite3.Row
     return db
 
+
 def init_db():
-    """initialize the db"""
+    """Initialize the db"""
     db = db_connection()
     db.execute("""
         CREATE TABLE IF NOT EXISTS runs (
@@ -19,5 +26,4 @@ def init_db():
         )
     """)
     db.commit()
-    db.close()
-
+    db.close() 
