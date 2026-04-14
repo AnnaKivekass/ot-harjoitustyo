@@ -93,5 +93,4 @@ class RunApp:
     def find_date(self, date):
         """find runs by date"""
         runs_list = self.list_runs()
-        return [run for run in runs_list if run.date == date]
-    
+        return [run for run in runs_list if run.date == date] 
