@@ -31,6 +31,10 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - suoritusten tarkastelu päivämäärän perusteella  [tehty]
 - keskimääräisen matkan laskeminen [tehty]
 - päivämäärällä voi hakea juoksusuoritusta [tehty]
+- juoksujen lajittelu matkan ja päivämäärän perusteella [tehty]
+- juoksujen tarkastelu graafisesti matplotlibillä [tehty]
+- popup joka näyttää juoksusuoritusten tarkemmat tiedot
+- syötteiden validointi, jotta virheellisiä arvoja ei tulisi [tehty]
 
 ### Jatkokehitysideat
 

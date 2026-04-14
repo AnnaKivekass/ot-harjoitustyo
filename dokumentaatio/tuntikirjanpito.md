@@ -8,5 +8,6 @@
 | 28.3 (la) | 1.5 h | Toiminnallisuuksien lisääminen |
 | 8.4 (ke) | 3 h | Tietokanta, pylint, testit, coverage |
 | 13.4 (ma) | 4 h | Testit, arkkitehtuuri, toiminnallisuudet ja GUI |
+| 14.4 (ti) | 2 h | GUI, kuvaajat, toiminnallisuudet |
 
-**Yhteensä: 13.5 h**
+**Yhteensä: 15.5 h**
