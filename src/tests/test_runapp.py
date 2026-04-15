@@ -32,7 +32,6 @@ class TestRunApp(unittest.TestCase):
         runs = self.app.list_runs()
         self.assertEqual(len(runs), 0)
 
-
     def test_distance_total(self):
         self.app.add_run(5, 30, "26.3")
         self.assertEqual(self.app.distance_total(), 5)
@@ -81,4 +80,41 @@ class TestRunApp(unittest.TestCase):
 
         runs = self.app.find_date("26.3.2026")
         self.assertEqual(len(runs), 2)
+
+    def test_average_distance(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "13.4.2026")
+
+        self.assertEqual(self.app.average_distance(), 7.5)
         
+    def test_average_distance_no_runs(self):
+        self.assertEqual(self.app.average_distance(), 0)
+                         
+
+    def test_update_run(self):
+        self.app.add_run(10, 60, "26.3.2026")
+
+        db_runs = get_runs()
+        run_id = db_runs[0]["id"]
+
+        self.app.update_run(run_id, 15, 90, "8.4.2026")
+
+        runs = self.app.list_runs()
+        self.assertEqual(len(runs), 1)
+        
+    def test_sort_by_date(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "15.4.2026")
+        
+        sorted_runs = self.app.sort_by_date()
+        self.assertEqual(sorted_runs[0].date, "15.4.2026")
+        self.assertEqual(sorted_runs[1].date, "26.3.2026")
+
+  
+    def test_sort_by_distance(self):
+        self.app.add_run(10, 60, "26.3.2026")
+        self.app.add_run(5, 30, "15.4.2026")
+
+        sorted_runs = self.app.sort_by_distance()
+        self.assertEqual(sorted_runs[0].distance, 10)
+        self.assertEqual(sorted_runs[1].distance, 5)
