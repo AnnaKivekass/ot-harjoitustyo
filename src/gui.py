@@ -147,6 +147,12 @@ class RunGUI:
         self.listbox.delete(0, tk.END)
         self.runs = runs
 
+        if not runs:
+            self.result_label.config(text="No runs found")
+            return
+        else:
+            self.result_label.config(text="")
+
         for run in runs:
             text = f"{run.distance} km, {run.minutes} min, {run.date}"
             self.listbox.insert(tk.END, text)
