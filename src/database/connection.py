@@ -4,6 +4,7 @@ import sqlite3
 import os
 
 def db_connection():
+    """"create a db connection and return it"""
     db = sqlite3.connect("runs.db")
     db.row_factory = sqlite3.Row
     return db
