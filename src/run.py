@@ -1,5 +1,5 @@
 """app logic for runs"""
-from database.runs import add_run, get_runs, delete_run
+from database.runs import add_run, get_runs, delete_run, update_run
 
 
 class Run:
@@ -41,6 +41,10 @@ class RunApp:
         """delete run by id"""
         delete_run(index)
         return True
+    
+    def update_run(self, run_id, distance, minutes, date):
+        """update existing run"""
+        update_run(run_id, distance, minutes, date)
 
     def distance_total(self):
         """return total distance"""

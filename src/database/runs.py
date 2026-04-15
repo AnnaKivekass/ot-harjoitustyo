@@ -24,3 +24,12 @@ def delete_run(run_id):
     db.execute("DELETE FROM runs WHERE id = ?", (run_id,))
     db.commit()
     db.close()
+
+def update_run(run_id, distance, minutes, date):
+    db = db_connection()
+    db.execute(
+        "UPDATE runs SET distance = ?, minutes = ?, date = ? WHERE id = ?",
+        (distance, minutes, date, run_id)
+    )
+    db.commit()
+    db.close()

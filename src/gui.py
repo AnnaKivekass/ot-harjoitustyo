@@ -29,7 +29,8 @@ class RunGUI:
         self.date_entry = tk.Entry(root)
         self.date_entry.grid(row=3, column=1, padx=5, pady=5)
 
-        tk.Button(root, text="Add Run", command=self.add_run).grid(row=4, column=0, padx=5, pady=5)
+        self.add_button = tk.Button(root, text="Add Run", command=self.add_run)
+        self.add_button.grid(row=4, column=0, padx=5, pady=5)
         tk.Button(root, text="Delete Selected", command=self.delete_run).grid(row=4, column=1, padx=5, pady=5)
         tk.Button(root, text="Load Selected", command=self.load_selected).grid(row=4, column=2, padx=5, pady=5)
 
@@ -76,8 +77,7 @@ class RunGUI:
                 raise ValueError
 
             if self.editing_id:
-                self.app.delete_run(self.editing_id)
-                self.app.add_run(distance, minutes, date)
+                self.app.update_run(self.editing_id, distance, minutes, date)
                 self.editing_id = None
             else:
                 self.app.add_run(distance, minutes, date)
@@ -119,6 +119,7 @@ class RunGUI:
 
         self.date_entry.delete(0, tk.END)
         self.date_entry.insert(0, run.date)
+        self.add_button.config(text="Update Run")
 
     def total_distance(self):
         total = self.app.distance_total()
