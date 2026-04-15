@@ -31,7 +31,6 @@ class RunApp:
     def list_runs(self):
         """return all runs"""
         rows = get_runs()
-        print(rows)
         return [
             Run(row["id"], row["distance"], row["minutes"], row["date"])
             for row in rows
