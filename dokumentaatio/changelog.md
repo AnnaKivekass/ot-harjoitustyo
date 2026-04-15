@@ -31,7 +31,9 @@
 - Refaktoroitu guista toiminnallisuuksia run appiin
 - Korjattu tietokanta
 - Lisätty muokkaustoiminnallisuus lisätylle juoksulle
-
+- Lisätty testit sorttaamiselle, muokkaukselle ja keskimääräiselle matkalle
+- Korjattu pylint virheet
+- Lisätty asennus- ja käyttöohjeet
 
 
 ## Viikko 6
