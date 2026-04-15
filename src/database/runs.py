@@ -26,6 +26,7 @@ def delete_run(run_id):
     db.close()
 
 def update_run(run_id, distance, minutes, date):
+    """update run by id"""
     db = db_connection()
     db.execute(
         "UPDATE runs SET distance = ?, minutes = ?, date = ? WHERE id = ?",

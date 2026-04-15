@@ -40,7 +40,7 @@ class RunApp:
         """delete run by id"""
         delete_run(index)
         return True
-    
+
     def update_run(self, run_id, distance, minutes, date):
         """update existing run"""
         update_run(run_id, distance, minutes, date)
