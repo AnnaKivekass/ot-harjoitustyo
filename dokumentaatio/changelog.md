@@ -30,6 +30,8 @@
 
 - Refaktoroitu guista toiminnallisuuksia run appiin
 - Korjattu tietokanta
+- Lisätty muokkaustoiminnallisuus lisätylle juoksulle
+
 
 
 ## Viikko 6

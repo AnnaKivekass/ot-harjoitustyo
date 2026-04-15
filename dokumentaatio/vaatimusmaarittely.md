@@ -35,6 +35,7 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - juoksujen tarkastelu graafisesti matplotlibillä [tehty]
 - popup joka näyttää juoksusuoritusten tarkemmat tiedot
 - syötteiden validointi, jotta virheellisiä arvoja ei tulisi [tehty]
+- lisättyjen juoksujen muokkaus [tehty]
 
 ### Jatkokehitysideat
 

@@ -9,5 +9,7 @@
 | 8.4 (ke) | 3 h | Tietokanta, pylint, testit, coverage |
 | 13.4 (ma) | 4 h | Testit, arkkitehtuuri, toiminnallisuudet ja GUI |
 | 14.4 (ti) | 2 h | GUI, kuvaajat, toiminnallisuudet |
+| 15.4 (ke) | 2 h | Koodin refaktorointi, toiminnallisuudet, tietokanta |
 
-**Yhteensä: 15.5 h**
+
+**Yhteensä: 17.5 h**
