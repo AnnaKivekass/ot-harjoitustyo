@@ -11,14 +11,12 @@ def add_run(distance, minutes, date):
     db.commit()
     db.close()
 
-
 def get_runs():
     """fetch all runs"""
     db = db_connection()
     rows = db.execute("SELECT * FROM runs").fetchall()
     db.close()
     return rows
-
 
 def delete_run(run_id):
     """delete a run by id"""

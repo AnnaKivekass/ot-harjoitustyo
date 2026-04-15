@@ -1,7 +1,6 @@
 """Database connection"""
 
 import sqlite3
-import os
 
 def db_connection():
     """"create a db connection and return it"""
@@ -21,4 +20,4 @@ def init_db():
         )
     """)
     db.commit()
-    db.close() 
+    db.close()

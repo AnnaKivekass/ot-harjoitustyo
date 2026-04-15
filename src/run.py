@@ -4,8 +4,8 @@ from database.runs import add_run, get_runs, delete_run
 
 class Run:
     """a single run"""
-    def __init__(self, id, distance, minutes, date):
-        self.id = id
+    def __init__(self, run_id, distance, minutes, date):
+        self.id = run_id
         self.distance = distance
         self.minutes = minutes
         self.date = date
@@ -102,9 +102,11 @@ class RunApp:
         return [run for run in runs_list if run.date == date]
 
     def sort_by_distance(self):
+        """sort runs by longest distance first"""
         runs = self.list_runs()
         return sorted(runs, key=lambda run: run.distance, reverse=True)
 
     def sort_by_date(self):
+        """sort runs by date, oldest first """
         runs = self.list_runs()
         return sorted(runs, key=lambda run: run.date)
