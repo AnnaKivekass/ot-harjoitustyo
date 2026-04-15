@@ -1,9 +1,11 @@
 """app logic for runs"""
 from database.runs import add_run, get_runs, delete_run
 
+
 class Run:
     """a single run"""
-    def __init__(self, distance, minutes, date):
+    def __init__(self, id, distance, minutes, date):
+        self.id = id
         self.distance = distance
         self.minutes = minutes
         self.date = date
@@ -29,8 +31,9 @@ class RunApp:
     def list_runs(self):
         """return all runs"""
         rows = get_runs()
+        print(rows)
         return [
-            Run(row["distance"], row["minutes"], row["date"])
+            Run(row["id"], row["distance"], row["minutes"], row["date"])
             for row in rows
         ]
 
@@ -52,6 +55,9 @@ class RunApp:
 
         distance_total = sum(run.distance for run in runs_list)
         minutes_total = sum(run.minutes for run in runs_list)
+
+        if distance_total == 0:
+            return 0
 
         return minutes_total / distance_total
 
@@ -93,4 +99,12 @@ class RunApp:
     def find_date(self, date):
         """find runs by date"""
         runs_list = self.list_runs()
-        return [run for run in runs_list if run.date == date] 
+        return [run for run in runs_list if run.date == date]
+
+    def sort_by_distance(self):
+        runs = self.list_runs()
+        return sorted(runs, key=lambda run: run.distance, reverse=True)
+
+    def sort_by_date(self):
+        runs = self.list_runs()
+        return sorted(runs, key=lambda run: run.date)

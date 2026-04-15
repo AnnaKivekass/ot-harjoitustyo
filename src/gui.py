@@ -5,7 +5,7 @@ from tkinter import messagebox
 
 from run import RunApp
 from database.connection import init_db
-from database.runs import get_runs
+
 
 class RunGUI:
     def __init__(self, root):
@@ -95,7 +95,7 @@ class RunGUI:
             return
 
         index = selection[0]
-        run_id = self.runs[index]["id"]
+        run_id = self.runs[index].id
 
         self.app.delete_run(run_id)
         self.refresh_list()
@@ -109,16 +109,16 @@ class RunGUI:
         index = selection[0]
         run = self.runs[index]
 
-        self.editing_id = run["id"]
+        self.editing_id = run.id
 
         self.distance_entry.delete(0, tk.END)
-        self.distance_entry.insert(0, run["distance"])
+        self.distance_entry.insert(0, run.distance)
 
         self.minutes_entry.delete(0, tk.END)
-        self.minutes_entry.insert(0, run["minutes"])
+        self.minutes_entry.insert(0, run.minutes)
 
         self.date_entry.delete(0, tk.END)
-        self.date_entry.insert(0, run["date"])
+        self.date_entry.insert(0, run.date)
 
     def total_distance(self):
         total = self.app.distance_total()
@@ -153,10 +153,10 @@ class RunGUI:
     def refresh_list(self):
         self.listbox.delete(0, tk.END)
 
-        self.runs = get_runs()
+        self.runs = self.app.list_runs()
 
         for run in self.runs:
-            text = f"{run['distance']} km, {run['minutes']} min, {run['date']}"
+            text = f"{run.distance} km, {run.minutes} min, {run.date}"
             self.listbox.insert(tk.END, text)
 
     def fastest_run(self):
@@ -174,13 +174,11 @@ class RunGUI:
         self.date_entry.delete(0, tk.END)
 
     def sort_by_distance(self):
-        runs = get_runs()
-        runs.sort(key=lambda r: r["distance"], reverse=True)
+        runs = self.app.sort_by_distance()
         self.update_listbox(runs)
 
     def sort_by_date(self):
-        runs = get_runs()
-        runs.sort(key=lambda r: r["date"])
+        runs = self.app.sort_by_date()
         self.update_listbox(runs)
 
     def update_listbox(self, runs):
@@ -188,7 +186,7 @@ class RunGUI:
         self.runs = runs
 
         for run in runs:
-            text = f"{run['distance']} km, {run['minutes']} min, {run['date']}"
+            text = f"{run.distance} km, {run.minutes} min, {run.date}"
             self.listbox.insert(tk.END, text)
 
     def show_details(self, event):
@@ -199,26 +197,21 @@ class RunGUI:
         index = selection[0]
         run = self.runs[index]
 
-        distance = run["distance"]
-        minutes = run["minutes"]
-        date = run["date"]
-
-        pace = minutes / distance
-        speed = distance / (minutes / 60)
+        pace = run.pace()
+        speed = run.speed()
 
         window = tk.Toplevel()
         window.title("Run details")
 
-        tk.Label(window, text=f"Date: {date}").pack(pady=5)
-        tk.Label(window, text=f"Distance: {distance} km").pack(pady=5)
-        tk.Label(window, text=f"Time: {minutes} min").pack(pady=5)
+        tk.Label(window, text=f"Date: {run.date}").pack(pady=5)
+        tk.Label(window, text=f"Distance: {run.distance} km").pack(pady=5)
+        tk.Label(window, text=f"Time: {run.minutes} min").pack(pady=5)
         tk.Label(window, text=f"Pace: {round(pace, 2)} min/km").pack(pady=5)
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
-        runs = get_runs()
-
-        distances = [run["distance"] for run in runs]
+        runs = self.app.list_runs()
+        distances = [run.distance for run in runs]
 
         plt.figure()
         plt.plot(distances)
@@ -236,7 +229,7 @@ class RunGUI:
         index = selection[0]
         run = self.runs[index]
 
-        pace = run["minutes"] / run["distance"]
+        pace = run.pace()
 
         plt.figure()
         plt.bar(["Selected Run"], [pace])
@@ -245,8 +238,8 @@ class RunGUI:
         plt.show()
 
     def show_graph_with_selected(self):
-        runs = get_runs()
-        distances = [r["distance"] for r in runs]
+        runs = self.app.list_runs()
+        distances = [r.distance for r in runs]
 
         selection = self.listbox.curselection()
 
@@ -257,7 +250,7 @@ class RunGUI:
             index = selection[0]
             plt.scatter(index, distances[index], s=100)
 
-        plt.title("Run distances (selected highlighted)")
+        plt.title("Run distances (selected run highlighted)")
         plt.show()
 
 
@@ -269,4 +262,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
