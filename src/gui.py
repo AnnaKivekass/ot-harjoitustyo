@@ -79,6 +79,7 @@ class RunGUI:
             if self.editing_id:
                 self.app.update_run(self.editing_id, distance, minutes, date)
                 self.editing_id = None
+                self.add_button.config(text="Add Run")
             else:
                 self.app.add_run(distance, minutes, date)
 
@@ -179,6 +180,8 @@ class RunGUI:
         self.distance_entry.delete(0, tk.END)
         self.minutes_entry.delete(0, tk.END)
         self.date_entry.delete(0, tk.END)
+        self.editing_id = None
+        self.add_button.config(text="Add Run")
 
     def sort_by_distance(self):
         runs = self.app.sort_by_distance()
@@ -221,7 +224,9 @@ class RunGUI:
         distances = [run.distance for run in runs]
 
         plt.figure()
+        dates = [run.date for run in runs]
         plt.plot(distances)
+        plt.xticks(range(len(dates)), dates, rotation=45)
         plt.title("Run distances")
         plt.xlabel("Run")
         plt.ylabel("Distance (km)")
@@ -246,7 +251,7 @@ class RunGUI:
 
     def show_graph_with_selected(self):
         runs = self.app.list_runs()
-        distances = [r.distance for r in runs]
+        distances = [run.distance for run in runs]
 
         selection = self.listbox.curselection()
 
@@ -255,7 +260,13 @@ class RunGUI:
 
         if selection:
             index = selection[0]
-            plt.scatter(index, distances[index], s=100)
+            selected_run = self.runs[index]
+
+            selected_index = next(
+                i for i, run in enumerate(runs) if run.id == selected_run.id
+            )
+
+            plt.scatter(selected_index, distances[selected_index], s = 100, color="red", label="Selected Run")
 
         plt.title("Run distances (selected run highlighted)")
         plt.show()
