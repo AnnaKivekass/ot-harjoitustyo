@@ -34,6 +34,6 @@
 - Lisätty testit sorttaamiselle, muokkaukselle ja keskimääräiselle matkalle
 - Korjattu pylint virheet
 - Lisätty asennus- ja käyttöohjeet
-
+- Lisätty invoke ohjeet readmehen
 
 ## Viikko 6
