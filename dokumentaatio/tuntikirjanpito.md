@@ -10,6 +10,6 @@
 | 13.4 (ma) | 4 h | Testit, arkkitehtuuri, toiminnallisuudet ja GUI |
 | 14.4 (ti) | 2 h | GUI, kuvaajat, toiminnallisuudet |
 | 15.4 (ke) | 3,5 h | Koodin refaktorointi, toiminnallisuudet, tietokanta, testit, asennus- ja käyttöohjeet |
+| 17.4 (pe) | 1 h | Bugien korjaaminen ja käyttöliittymän parantaminen |
 
-
-**Yhteensä: 19 h**
+**Yhteensä: 20 h**
