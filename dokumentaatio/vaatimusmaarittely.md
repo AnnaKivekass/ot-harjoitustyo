@@ -36,7 +36,9 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - popup joka näyttää juoksusuoritusten tarkemmat tiedot
 - syötteiden validointi, jotta virheellisiä arvoja ei tulisi [tehty]
 - lisättyjen juoksujen muokkaus [tehty]
+- käyttöliittymän kehittäminen graafiseksi [tehty]
 
 ### Jatkokehitysideat
 
-- käyttöliittymän kehittäminen graafiseksi [tehty]
+
+

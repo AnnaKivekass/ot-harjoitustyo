@@ -35,5 +35,7 @@
 - Korjattu pylint virheet
 - Lisätty asennus- ja käyttöohjeet
 - Lisätty invoke ohjeet readmehen
+- Korjattu testit käyttämään erillistä tietokantaa
+- Lisätty arkkitehtuuri.md havainnollistavat sekvenssikaaviot
 
 ## Viikko 6
