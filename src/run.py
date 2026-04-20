@@ -108,5 +108,4 @@ class RunApp:
         return sorted(
             runs,
             key=lambda run: tuple(map(int, run.date.split(".")))[::-1]
-        )
- 
+            )
