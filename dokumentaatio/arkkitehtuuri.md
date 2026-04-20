@@ -101,3 +101,38 @@ Tietokantaan tallennetaan jokaiselle suoritukselle:
 - Distance
 - Minutes
 - Date
+
+
+# Sovelluksen toiminnallisuutta kuvaava sekvenssikaavio, joka esittää juoksusuorituksen lisäämisen.
+
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant GUI
+    participant RunApp
+    participant Database
+
+    User->>GUI: klikkaa "Add"
+    GUI->>RunApp: add_run(distance, minutes, date)
+    RunApp->>Database: add_run(...)
+    Database-->>RunApp: ok
+    RunApp-->>GUI: updated list
+
+```
+
+# Sovelluksen toiminnallisuutta kuvaava sekvenssikaavio, joka esittää juoksusuorituksen poistamisen
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant GUI
+    participant RunApp
+    participant Database
+
+    User->>GUI: poistaa suorituksen
+    GUI->>RunApp: delete_run(id)
+    RunApp->>Database: delete_run(id)
+    Database-->>RunApp: ok
+    RunApp-->>GUI: updated list
+```
