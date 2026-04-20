@@ -78,6 +78,15 @@ class RunGUI:
             if distance <= 0 or minutes <= 0 or not date:
                 raise ValueError
 
+            parts = date.split(".")
+            if len(parts) != 3:
+                raise ValueError
+
+            day, month, year = parts
+            int(day)
+            int(month)
+            int(year)
+
             if self.editing_id:
                 self.app.update_run(self.editing_id, distance, minutes, date)
                 self.editing_id = None
@@ -89,7 +98,7 @@ class RunGUI:
             self.clear_fields()
 
         except ValueError:
-            messagebox.showerror("Error", "Invalid input")
+            messagebox.showerror("Error", "Invalid input. Use format dd.mm.yyyy")
 
     def delete_run(self):
         """delete selected run"""
