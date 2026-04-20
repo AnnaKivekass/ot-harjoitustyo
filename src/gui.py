@@ -8,6 +8,7 @@ from database.connection import init_db
 
 
 class RunGUI:
+    """GUI app for tracking runs"""
     def __init__(self, root):
         self.app = RunApp()
         self.editing_id = None
@@ -68,6 +69,7 @@ class RunGUI:
         self.refresh_list()
 
     def add_run(self):
+        """add new run or update existing one"""
         try:
             distance = float(self.distance_entry.get())
             minutes = float(self.minutes_entry.get())
@@ -90,6 +92,7 @@ class RunGUI:
             messagebox.showerror("Error", "Invalid input")
 
     def delete_run(self):
+        """delete selected run"""
         selection = self.listbox.curselection()
         if not selection:
             messagebox.showerror("Error", "Select a run first")
@@ -102,6 +105,7 @@ class RunGUI:
         self.refresh_list()
 
     def load_selected(self):
+        """load selected run data into input fields for editing"""
         selection = self.listbox.curselection()
         if not selection:
             messagebox.showerror("Error", "Select a run first")
@@ -123,14 +127,17 @@ class RunGUI:
         self.add_button.config(text="Update Run")
 
     def total_distance(self):
+        """calculate total distance of all runs"""
         total = self.app.distance_total()
         self.result_label.config(text=f"Total distance: {total} km")
 
     def average_pace(self):
+        """calculate average pace of all runs"""
         pace = self.app.average_pace()
         self.result_label.config(text=f"Average pace: {round(pace, 2)} min/km")
 
     def longest_run(self):
+        """find longest run and display it"""
         run = self.app.longest_run()
         if run:
             self.result_label.config(text=f"Longest run: {run.distance} km on {run.date}")
@@ -138,10 +145,12 @@ class RunGUI:
             self.result_label.config(text="No runs found")
 
     def average_distance(self):
+        """"find average distance of all runs and display it"""
         avg = self.app.average_distance()
         self.result_label.config(text=f"Average distance: {round(avg, 2)} km")
 
     def search_by_date(self):
+        """search runs by date and display them"""
         date = self.date_entry.get()
         runs = self.app.find_date(date)
 
@@ -159,6 +168,7 @@ class RunGUI:
             self.listbox.insert(tk.END, text)
 
     def refresh_list(self):
+        """refresh the listbox with all runs"""
         self.listbox.delete(0, tk.END)
 
         self.runs = self.app.list_runs()
@@ -168,15 +178,16 @@ class RunGUI:
             self.listbox.insert(tk.END, text)
 
     def fastest_run(self):
-        run = self.app.fastest_run()
-        if run:
-            self.result_label.config(
-                text=f"Fastest run: {run.distance} km, {run.minutes} min, {run.date}, pace {round(run.pace(), 2)} min/km"
-            )
-        else:
-            self.result_label.config(text="No runs found")
+            """find fastest run and based on pace and display it"""
+            run = self.app.fastest_run()
+            if run:
+                pace = run.pace()
+                self.result_label.config(text=f"Fastest run: {run.distance} km on {run.date} with pace {round(pace, 2)} min/km")
+            else:
+                self.result_label.config(text="No runs found")
 
     def clear_fields(self):
+        """clear all input fields and reset editing state"""
         self.distance_entry.delete(0, tk.END)
         self.minutes_entry.delete(0, tk.END)
         self.date_entry.delete(0, tk.END)
@@ -184,14 +195,17 @@ class RunGUI:
         self.add_button.config(text="Add Run")
 
     def sort_by_distance(self):
+        """sort runs by distance and display them"""
         runs = self.app.sort_by_distance()
         self.update_listbox(runs)
 
     def sort_by_date(self):
+        """sort runs by date and display them"""
         runs = self.app.sort_by_date()
         self.update_listbox(runs)
 
     def update_listbox(self, runs):
+        """helper method to update listbox with given runs"""
         self.listbox.delete(0, tk.END)
         self.runs = runs
 
@@ -200,6 +214,7 @@ class RunGUI:
             self.listbox.insert(tk.END, text)
 
     def show_details(self, event):
+        """open a new window showing details of the selected run"""
         selection = self.listbox.curselection()
         if not selection:
             return
@@ -220,6 +235,7 @@ class RunGUI:
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
+        """display a graph of all run distances over time"""
         runs = self.app.list_runs()
         distances = [run.distance for run in runs]
 
@@ -233,6 +249,7 @@ class RunGUI:
         plt.show()
 
     def show_selected_pace(self):
+        """display a bar graph of the pace of the selected run"""
         selection = self.listbox.curselection()
         if not selection:
             messagebox.showerror("Error", "Select a run first")
@@ -250,6 +267,7 @@ class RunGUI:
         plt.show()
 
     def show_graph_with_selected(self):
+        """display a graph of all run distances and highlight the selected run"""
         runs = self.app.list_runs()
         distances = [run.distance for run in runs]
 
