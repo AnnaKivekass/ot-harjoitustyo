@@ -12,38 +12,43 @@ class Run:
 
     def pace(self):
         """return pace in minutes / km"""
+        if self.distance == 0:
+            return 0
         return self.minutes / self.distance
 
     def speed(self):
         """return speed in km/hour"""
+        if self.minutes == 0:
+            return 0
         return self.distance / (self.minutes / 60)
 
 
 class RunApp:
     """app logic for handling runs"""
-    def __init__(self):
-        pass
+
+    def __init__(self, test=False):
+        self.test = test
 
     def add_run(self, distance, minutes, date):
         """add a run"""
-        add_run(distance, minutes, date)
+        add_run(distance, minutes, date, self.test)
 
     def list_runs(self):
         """return all runs"""
-        rows = get_runs()
+        rows = get_runs(self.test)
         return [
             Run(row["id"], row["distance"], row["minutes"], row["date"])
             for row in rows
         ]
 
-    def delete_run(self, index):
+    def delete_run(self, run_id):
         """delete run by id"""
-        delete_run(index)
+        delete_run(run_id, self.test)
         return True
 
     def update_run(self, run_id, distance, minutes, date):
         """update existing run"""
-        update_run(run_id, distance, minutes, date)
+        update_run(run_id, distance, minutes, date, self.test)
 
     def distance_total(self):
         """return total distance"""
@@ -70,13 +75,7 @@ class RunApp:
         if not runs_list:
             return None
 
-        longest = runs_list[0]
-
-        for run in runs_list:
-            if run.distance > longest.distance:
-                longest = run
-
-        return longest
+        return max(runs_list, key=lambda run: run.distance)
 
     def fastest_run(self):
         """return run with fastest pace"""
@@ -84,13 +83,7 @@ class RunApp:
         if not runs_list:
             return None
 
-        fastest = runs_list[0]
-
-        for run in runs_list:
-            if run.pace() < fastest.pace():
-                fastest = run
-
-        return fastest
+        return min(runs_list, key=lambda run: run.pace())
 
     def average_distance(self):
         """return average distance"""
@@ -110,6 +103,10 @@ class RunApp:
         return sorted(runs, key=lambda run: run.distance, reverse=True)
 
     def sort_by_date(self):
-        """sort runs by date, oldest first """
+        """sort runs by date, oldest first"""
         runs = self.list_runs()
-        return sorted(runs, key=lambda run: run.date)
+        return sorted(
+            runs,
+            key=lambda run: tuple(map(int, run.date.split(".")))[::-1]
+        )
+ 

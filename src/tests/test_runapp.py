@@ -7,12 +7,12 @@ from database.runs import get_runs, delete_run
 class TestRunApp(unittest.TestCase):
 
     def setUp(self):
-        init_db()
-        self.app = RunApp()
+        init_db(test = True)
+        self.app = RunApp(test = True)
 
-        rows = get_runs()
+        rows = get_runs(test = True)
         for row in rows:
-            delete_run(row["id"])
+            delete_run(row["id"], test = True)
 
     def test_add_run(self):
         self.app.add_run(10, 60, "26.3.2026")
@@ -23,7 +23,7 @@ class TestRunApp(unittest.TestCase):
     def test_delete_run(self):
         self.app.add_run(10, 60, "26.3.2026")
 
-        db_runs = get_runs()
+        db_runs = get_runs(test= True)
         run_id = db_runs[0]["id"]
 
         result = self.app.delete_run(run_id)
@@ -94,7 +94,7 @@ class TestRunApp(unittest.TestCase):
     def test_update_run(self):
         self.app.add_run(10, 60, "26.3.2026")
 
-        db_runs = get_runs()
+        db_runs = get_runs(test = True)
         run_id = db_runs[0]["id"]
 
         self.app.update_run(run_id, 15, 90, "8.4.2026")
@@ -107,8 +107,8 @@ class TestRunApp(unittest.TestCase):
         self.app.add_run(5, 30, "15.4.2026")
         
         sorted_runs = self.app.sort_by_date()
-        self.assertEqual(sorted_runs[0].date, "15.4.2026")
-        self.assertEqual(sorted_runs[1].date, "26.3.2026")
+        self.assertEqual(sorted_runs[0].date, "26.3.2026")
+        self.assertEqual(sorted_runs[1].date, "15.4.2026")
 
   
     def test_sort_by_distance(self):

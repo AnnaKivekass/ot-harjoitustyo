@@ -17,6 +17,12 @@ def db_connection(test=False):
     db.row_factory = sqlite3.Row
     return db
 
+def clear_db(test=False):
+    """clear all runs from db"""
+    db = db_connection(test)
+    db.execute("DELETE FROM runs")
+    db.commit()
+    db.close()
 
 def init_db(test=False):
     """Initialize the db"""
