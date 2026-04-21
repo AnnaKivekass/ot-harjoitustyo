@@ -14,7 +14,9 @@ poetry run invoke start
 
 poetry run invoke test
 
-- Sovelluksen testikattavuusraportin saa generoitua komennolla
+- Sovelluksen testikattavuusraportin saa generoitua komennoilla
+
+poetry run invoke coverage
 
 poetry run invoke coverage-report
 
