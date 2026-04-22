@@ -36,4 +36,10 @@ poetry run invoke lint
 
 - [Release](https://github.com/AnnaKivekass/ot-harjoitustyo/releases/tag/viikko5)
 
+---
+
+**Ylimääräinen koodikatselmointi**
+
+- [Koodikatselmointi](https://github.com/lottatoivanen/ot-harjoitustyo.git)
+
 
