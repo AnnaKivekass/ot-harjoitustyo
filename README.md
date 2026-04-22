@@ -34,4 +34,6 @@ poetry run invoke lint
 - [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 - [Asennusohje](dokumentaatio/asennus%20ja%20käyttöohje.md)
 
+- [Release](https://github.com/AnnaKivekass/ot-harjoitustyo/releases/tag/viikko5)
+
 
