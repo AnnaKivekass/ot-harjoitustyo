@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from tkinter import messagebox
+from datetime import datetime
 
 from run import RunApp
 from database.connection import init_db
@@ -72,37 +73,42 @@ class RunGUI:
 
         self.refresh_list()
 
+    from datetime import datetime
+
     def add_run(self):
         """add new run or update existing one"""
         try:
             distance = float(self.distance_entry.get())
             minutes = float(self.minutes_entry.get())
-            date = self.date_entry.get()
-
-            if distance <= 0 or minutes <= 0 or not date:
-                raise ValueError
-
-            parts = date.split(".")
-            if len(parts) != 3:
-                raise ValueError
-
-            day, month, year = parts
-            int(day)
-            int(month)
-            int(year)
-
-            if self.editing_id:
-                self.app.update_run(self.editing_id, distance, minutes, date)
-                self.editing_id = None
-                self.add_button.config(text="Add Run")
-            else:
-                self.app.add_run(distance, minutes, date)
-
-            self.refresh_list()
-            self.clear_fields()
-
         except ValueError:
-            messagebox.showerror("Error", "Invalid input. Use format dd.mm.yyyy")
+            messagebox.showerror("Error", "Distance and minutes must be numbers")
+            return
+
+        if distance <= 0 or minutes <= 0:
+            messagebox.showerror("Error", "Distance and minutes must be positive")
+            return
+
+        date = self.date_entry.get()
+
+        if not date:
+            messagebox.showerror("Error", "Date cannot be empty")
+            return
+
+        try:
+            datetime.strptime(date, "%d.%m.%Y")
+        except ValueError:
+            messagebox.showerror("Error", "Invalid date. Use format dd.mm.yyyy")
+            return
+
+        if self.editing_id:
+            self.app.update_run(self.editing_id, distance, minutes, date)
+            self.editing_id = None
+            self.add_button.config(text="Add Run")
+        else:
+            self.app.add_run(distance, minutes, date)
+
+        self.refresh_list()
+        self.clear_fields()
 
     def delete_run(self):
         """delete selected run"""

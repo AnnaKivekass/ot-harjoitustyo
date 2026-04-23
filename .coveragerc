@@ -11,3 +11,4 @@ omit =
     src/tests/*
     src/ui.py
     src/gui.py
+    src/graphs.py
