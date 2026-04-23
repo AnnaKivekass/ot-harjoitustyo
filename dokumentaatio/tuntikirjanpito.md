@@ -13,8 +13,8 @@
 | 17.4 (pe) | 1,5 h | Bugien korjaaminen ja käyttöliittymän parantaminen, README.mdn päivittäminen |
 | 20.4 (ma) | 2,5 h | Testien tietokannan korjaaminen, sekvenssikaavioiden lisääminen, docstringien lisääminen, toiminnallisuuksien parantaminen |
 | 21 .4 (ti) | 0,5 h | README.mdn päivitys, releasen tekeminen |
-| 23.4 (to) | 2 h |Refaktorointi, error messaget, arkkitehtuuri.md parantaminen |
+| 23.4 (to) | 3 h |Refaktorointi, error messaget, arkkitehtuuri.md ja dokumentaatio |
 
 
 
-**Yhteensä: 25,5 h**
+**Yhteensä: 26,5 h**
