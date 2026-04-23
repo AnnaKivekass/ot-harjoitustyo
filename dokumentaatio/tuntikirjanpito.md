@@ -12,8 +12,9 @@
 | 15.4 (ke) | 3,5 h | Koodin refaktorointi, toiminnallisuudet, tietokanta, testit, asennus- ja käyttöohjeet |
 | 17.4 (pe) | 1,5 h | Bugien korjaaminen ja käyttöliittymän parantaminen, README.mdn päivittäminen |
 | 20.4 (ma) | 2,5 h | Testien tietokannan korjaaminen, sekvenssikaavioiden lisääminen, docstringien lisääminen, toiminnallisuuksien parantaminen |
-| 2 .4 (ti) | 0,5 h | README.mdn päivitys, releasen tekeminen |
+| 21 .4 (ti) | 0,5 h | README.mdn päivitys, releasen tekeminen |
+| 23.4 (to) | 2 h |Refaktorointi, error messaget, arkkitehtuuri.md parantaminen |
 
 
 
-**Yhteensä: 23,5 h**
+**Yhteensä: 25,5 h**

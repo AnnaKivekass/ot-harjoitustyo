@@ -39,3 +39,7 @@
 - Lisätty arkkitehtuuri.md havainnollistavat sekvenssikaaviot
 
 ## Viikko 6
+
+- Refaktoroitu graafin koodi gui.pysta pois
+- Lisätty error messaget ja ehdot että aika ja matka eivät voi olla negatiivisia syötteitä
+- 

@@ -37,6 +37,7 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - syötteiden validointi, jotta virheellisiä arvoja ei tulisi [tehty]
 - lisättyjen juoksujen muokkaus [tehty]
 - käyttöliittymän kehittäminen graafiseksi [tehty]
+- error messaget virheellisistä arvoista syötteessä [tehty]
 
 ### Jatkokehitysideat
 
