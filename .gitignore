@@ -5,3 +5,4 @@ htmlcov
 runs.dbruns.db
 src/ui.py
 runs.db
+test.db
