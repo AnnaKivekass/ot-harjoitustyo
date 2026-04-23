@@ -1,11 +1,15 @@
 import tkinter as tk
-import matplotlib.pyplot as plt
 
 from tkinter import messagebox
 
 from run import RunApp
 from database.connection import init_db
 
+from graphs import (
+    show_distance_graph,
+    show_selected_pace_graph,
+    show_graph_with_highlight
+)
 
 class RunGUI:
     """GUI app for tracking runs"""
@@ -187,13 +191,13 @@ class RunGUI:
             self.listbox.insert(tk.END, text)
 
     def fastest_run(self):
-            """find fastest run and based on pace and display it"""
-            run = self.app.fastest_run()
-            if run:
-                pace = run.pace()
-                self.result_label.config(text=f"Fastest run: {run.distance} km on {run.date} with pace {round(pace, 2)} min/km")
-            else:
-                self.result_label.config(text="No runs found")
+        """find fastest run and based on pace and display it"""
+        run = self.app.fastest_run()
+        if run:
+            pace = run.pace()
+            self.result_label.config(text=f"Fastest run: {run.distance} km on {run.date} with pace {round(pace, 2)} min/km")
+        else:
+            self.result_label.config(text="No runs found")
 
     def clear_fields(self):
         """clear all input fields and reset editing state"""
@@ -244,21 +248,10 @@ class RunGUI:
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
-        """display a graph of all run distances over time"""
         runs = self.app.list_runs()
-        distances = [run.distance for run in runs]
-
-        plt.figure()
-        dates = [run.date for run in runs]
-        plt.plot(distances)
-        plt.xticks(range(len(dates)), dates, rotation=45)
-        plt.title("Run distances")
-        plt.xlabel("Run")
-        plt.ylabel("Distance (km)")
-        plt.show()
+        show_distance_graph(runs)
 
     def show_selected_pace(self):
-        """display a bar graph of the pace of the selected run"""
         selection = self.listbox.curselection()
         if not selection:
             messagebox.showerror("Error", "Select a run first")
@@ -267,36 +260,19 @@ class RunGUI:
         index = selection[0]
         run = self.runs[index]
 
-        pace = run.pace()
-
-        plt.figure()
-        plt.bar(["Selected Run"], [pace])
-        plt.ylabel("Pace (min/km)")
-        plt.title("Pace of selected run")
-        plt.show()
+        show_selected_pace_graph(run)
 
     def show_graph_with_selected(self):
-        """display a graph of all run distances and highlight the selected run"""
         runs = self.app.list_runs()
-        distances = [run.distance for run in runs]
 
         selection = self.listbox.curselection()
-
-        plt.figure()
-        plt.plot(distances)
+        selected_id = None
 
         if selection:
             index = selection[0]
-            selected_run = self.runs[index]
+            selected_id = self.runs[index].id
 
-            selected_index = next(
-                i for i, run in enumerate(runs) if run.id == selected_run.id
-            )
-
-            plt.scatter(selected_index, distances[selected_index], s = 100, color="red", label="Selected Run")
-
-        plt.title("Run distances (selected run highlighted)")
-        plt.show()
+        show_graph_with_highlight(runs, selected_id)
 
 
 def main():
