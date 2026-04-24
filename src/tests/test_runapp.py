@@ -66,6 +66,10 @@ class TestRunApp(unittest.TestCase):
         longest = self.app.longest_run()
         self.assertEqual(longest.distance, 10)
 
+    def test_longest_run_no_runs(self):
+        longest = self.app.longest_run()
+        self.assertEqual(longest, None)
+
     def test_fastest_run(self):
         self.app.add_run(10, 60, "26.3.2026")
         self.app.add_run(5, 20, "13.4.2026")
@@ -118,3 +122,4 @@ class TestRunApp(unittest.TestCase):
         sorted_runs = self.app.sort_by_distance()
         self.assertEqual(sorted_runs[0].distance, 10)
         self.assertEqual(sorted_runs[1].distance, 5)
+    
