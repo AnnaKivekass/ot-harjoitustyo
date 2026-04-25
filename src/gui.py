@@ -20,6 +20,7 @@ class RunGUI:
         self.runs = []
 
         root.title("Run App")
+        root.configure(bg="#ffe6f0")
 
         tk.Label(root, text="Run Tracker", font=("Arial", 14)).grid(row=0, column=0, columnspan=4, pady=5)
 
@@ -66,7 +67,7 @@ class RunGUI:
         self.listbox.config(yscrollcommand=scrollbar.set)
         scrollbar.config(command=self.listbox.yview)
 
-        self.result_label = tk.Label(root, text="")
+        self.result_label = tk.Label(root, text="", bg ="#ffe6f0")
         self.result_label.grid(row=10, column=0, columnspan=4, pady=5)
 
         root.bind("<Return>", lambda event: self.add_run())
@@ -254,10 +255,12 @@ class RunGUI:
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
+        """show a graph of all runs"""""
         runs = self.app.list_runs()
         show_distance_graph(runs)
 
     def show_selected_pace(self):
+        """show a graph of pace for the selected run"""
         selection = self.listbox.curselection()
         if not selection:
             messagebox.showerror("Error", "Select a run first")
@@ -269,6 +272,7 @@ class RunGUI:
         show_selected_pace_graph(run)
 
     def show_graph_with_selected(self):
+        """show a graph of all runs with the selected run highlighted"""
         runs = self.app.list_runs()
 
         selection = self.listbox.curselection()
