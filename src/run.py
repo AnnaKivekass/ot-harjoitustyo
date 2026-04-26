@@ -16,6 +16,18 @@ class Run:
             return 0
         return self.minutes / self.distance
 
+    def pace_str(self):
+        """return pace as a string in format minutes:seconds"""
+        pace = self.pace()
+        minutes = int(pace)
+        seconds = int(round((pace - minutes) * 60))
+
+        if seconds == 60:
+            minutes += 1
+            seconds = 0
+
+        return f"{minutes}:{seconds:02d}"
+    
     def speed(self):
         """return speed in km/hour"""
         if self.minutes == 0:

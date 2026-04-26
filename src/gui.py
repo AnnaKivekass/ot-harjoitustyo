@@ -154,7 +154,7 @@ class RunGUI:
     def average_pace(self):
         """calculate average pace of all runs"""
         pace = self.app.average_pace()
-        self.result_label.config(text=f"Average pace: {round(pace, 2)} min/km")
+        self.result_label.config(text=f"Average pace: {run.pace_str()} min/km")
 
     def longest_run(self):
         """find longest run and display it"""
@@ -202,7 +202,7 @@ class RunGUI:
         run = self.app.fastest_run()
         if run:
             pace = run.pace()
-            self.result_label.config(text=f"Fastest run: {run.distance} km on {run.date} with pace {round(pace, 2)} min/km")
+            self.result_label.config(text=f"Fastest run: {run.distance} km on {run.date} with pace {run.pace_str()} min/km")
         else:
             self.result_label.config(text="No runs found")
 
@@ -251,7 +251,7 @@ class RunGUI:
         tk.Label(window, text=f"Date: {run.date}").pack(pady=5)
         tk.Label(window, text=f"Distance: {run.distance} km").pack(pady=5)
         tk.Label(window, text=f"Time: {run.minutes} min").pack(pady=5)
-        tk.Label(window, text=f"Pace: {round(pace, 2)} min/km").pack(pady=5)
+        tk.Label(window, text=f"Pace: {run.pace_str()} min/km").pack(pady=5)
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
