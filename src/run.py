@@ -27,7 +27,7 @@ class Run:
             seconds = 0
 
         return f"{minutes}:{seconds:02d}"
-    
+
     def speed(self):
         """return speed in km/hour"""
         if self.minutes == 0:

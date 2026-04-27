@@ -33,7 +33,7 @@ class TestRunApp(unittest.TestCase):
         self.assertEqual(len(runs), 0)
 
     def test_distance_total(self):
-        self.app.add_run(5, 30, "26.3")
+        self.app.add_run(5, 30, "26.3.2026")
         self.assertEqual(self.app.distance_total(), 5)
 
     def test_distance_total_two_runs(self):
