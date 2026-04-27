@@ -17,6 +17,6 @@
 | 24.4 (pe) | 1h | Testit, refaktorointi |
 | 25.4 (la) | 1h | ui, dokumentaatio |
 | 26.4 (su) | 1h | Bugin korjaaminen |
+| 27.4 (ma) | 1h | Dokumentaatio  |
 
-
-**Yhteensä: 30,5 h**
+**Yhteensä: 31,5 h**

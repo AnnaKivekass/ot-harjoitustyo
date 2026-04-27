@@ -24,6 +24,7 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 ### Lisätyt toiminnallisuudet
 
 - juoksusuorituksen vauhdin (min/km) laskeminen  [tehty]
+- vauhti näytetään muodossa minuutit:sekunnit [tehty]
 - kokonaismatkan laskeminen  [tehty]
 - keskimääräisen vauhdin laskeminen  [tehty]
 - pisimmän juoksusuorituksen näyttäminen  [tehty]

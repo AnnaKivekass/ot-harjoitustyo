@@ -95,6 +95,36 @@ Tuplaklikkaamalla juoksua listasta avautuu uusi ikkuna, jossa näkyy
 - nopeus (km/h)
 
 ---
+### Lajittelu
+
+Juoksusuorituksia voi lajitella päivämäärän ja matkan mukaan painikkeilla
+
+**Sort by date** ja **Sort by distance** 
+
+---
+
+### Kaikkien suoritusten tarkastelu
+
+Juoksusuorituksista voi hakea myös vauhdillisesti nopeinta juoksua sekä matkallisesti pisintä juoksusuoritusta painikkeilla
+
+**Longest run** ja **Fastest run**
+
+On myös mahdollista katsoa kaikkien suoritusten keskimääräinen pituus ja keskimääräinen vauhti painikkeilla
+
+**Average distance** sekä **Average pace**
+
+---
+
+### Kuvaajien luominen
+
+Sovelluksessa on mahdollista luoda graafit 
+
+**Show graph** näyttää kuvaajan kaikkien tallennettujen juoksujen matkoista
+
+**Selected pace** kuvaaja näyttää vauhdin valitusta juoksusuorituksesta
+
+**Graph + Higlight** näyttää näyttää kuvaajan kaikkien tallennettujen juoksujen matkoista ja valittu suoritus on korostettu punaisella pisteellä kuvaajassa
+
 
 ## Tietojen tallennus
 
@@ -108,3 +138,4 @@ Tallennetut tiedot säilyvät ohjelman sulkemisen jälkeen
 
 - Jos syötteet ovat virheellisiä sovellus näyttää virheilmoituksen
 - Päivämäärän tulee olla muodossa `dd.mm.yyyy`
+- Kilometrit tai minuutit eivät voi olla negatiivisia arvoja
