@@ -1,4 +1,5 @@
 """app logic for runs"""
+from datetime import datetime
 from database.runs import add_run, get_runs, delete_run, update_run
 
 
@@ -41,8 +42,19 @@ class RunApp:
     def __init__(self, test=False):
         self.test = test
 
+    def _validate_inputs(self, distance, minutes, date):
+        """validate run inputs"""
+        if distance <= 0 or minutes <= 0:
+            raise ValueError("Distance and minutes must be positive")
+
+        try:
+            datetime.strptime(date, "%d.%m.%Y")
+        except ValueError as e:
+            raise ValueError("Invalid date format. Use dd.mm.yyyy") from e
+
     def add_run(self, distance, minutes, date):
         """add a run"""
+        self._validate_inputs(distance, minutes, date)
         add_run(distance, minutes, date, self.test)
 
     def list_runs(self):
@@ -60,6 +72,7 @@ class RunApp:
 
     def update_run(self, run_id, distance, minutes, date):
         """update existing run"""
+        self._validate_inputs(distance, minutes, date)
         update_run(run_id, distance, minutes, date, self.test)
 
     def distance_total(self):
@@ -71,13 +84,13 @@ class RunApp:
         """return average pace in all runs"""
         runs_list = self.list_runs()
         if not runs_list:
-            return 0
+            return None
 
         distance_total = sum(run.distance for run in runs_list)
         minutes_total = sum(run.minutes for run in runs_list)
 
         if distance_total == 0:
-            return 0
+            return None
 
         return minutes_total / distance_total
 
@@ -101,7 +114,8 @@ class RunApp:
         """return average distance"""
         runs_list = self.list_runs()
         if not runs_list:
-            return 0
+            return None
+
         return self.distance_total() / len(runs_list)
 
     def find_date(self, date):
@@ -117,7 +131,11 @@ class RunApp:
     def sort_by_date(self):
         """sort runs by date, oldest first"""
         runs = self.list_runs()
-        return sorted(
-            runs,
-            key=lambda run: tuple(map(int, run.date.split(".")))[::-1]
-            )
+
+        def safe_date(run):
+            try:
+                return datetime.strptime(run.date, "%d.%m.%Y")
+            except ValueError:
+                return datetime.min 
+
+        return sorted(runs, key=safe_date)
