@@ -44,3 +44,7 @@
 - Lisätty error messaget ja ehdot että aika ja matka eivät voi olla negatiivisia syötteitä
 - Korjattu pace min/km muotoon minuutit:sekunnit ja lisätty testi
 - Paranneltu kuvaajien toiminnallisuuksia ja käytettävyyttä
+- Lisätty käyttäjälle ilmoitus jos graafia ei voida muodostaa ilman dataa
+- Siirretty validointia käyttöliittymästä sovelluslogiikkaan
+- Korjattu average_pace-metodin bugi käyttöliittymässä
+- Lisätty testausdokumentti

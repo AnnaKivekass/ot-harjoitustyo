@@ -39,6 +39,10 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - lisättyjen juoksujen muokkaus [tehty]
 - käyttöliittymän kehittäminen graafiseksi [tehty]
 - error messaget virheellisistä arvoista syötteessä [tehty]
+- syötteiden validointi myös sovelluslogiikassa [tehty]
+- käyttäjälle ilmoitus, jos kuvaajaa ei voida muodostaa ilman dataa [tehty]
+- keskiarvojen käsittely tilanteessa, jossa suorituksia ei ole [tehty]
+- päivämäärän käsittelyn ja lajittelun parantaminen [tehty]
 
 ### Jatkokehitysideat
 
