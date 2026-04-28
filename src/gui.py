@@ -154,7 +154,17 @@ class RunGUI:
     def average_pace(self):
         """calculate average pace of all runs"""
         pace = self.app.average_pace()
-        self.result_label.config(text=f"Average pace: {run.pace_str()} min/km")
+
+        if pace is None:
+            self.result_label.config(text="No runs available")
+            return
+
+        minutes = int(pace)
+        seconds = int((pace - minutes) * 60)
+
+        self.result_label.config(
+            text=f"Average pace: {minutes}:{seconds:02d} min/km"
+        )
 
     def longest_run(self):
         """find longest run and display it"""
