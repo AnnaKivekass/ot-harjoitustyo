@@ -42,4 +42,5 @@
 
 - Refaktoroitu graafin koodi gui.pysta pois
 - Lisätty error messaget ja ehdot että aika ja matka eivät voi olla negatiivisia syötteitä
-- Korjattu pace min/km muotoon minuutit:sekunnit
+- Korjattu pace min/km muotoon minuutit:sekunnit ja lisätty testi
+- Paranneltu kuvaajien toiminnallisuuksia ja käytettävyyttä
