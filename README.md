@@ -4,6 +4,10 @@ Teen harjoitustyönä **sovelluksen juoksutreenien seurantaan**, jonka avulla vo
 
 ---
 
+### Asennus- ja käyttöohje:
+- [Asennusohje](dokumentaatio/asennus%20ja%20käyttöohje.md)
+---
+
 ## Sovelluksessa on käytössä invoke, jonka avulla voi suorittaa yleisimmät komennot projektin juuressa
 ---
 - Sovelluksen käynnistys komennolla 

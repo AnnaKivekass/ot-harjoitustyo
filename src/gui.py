@@ -174,11 +174,18 @@ class RunGUI:
         else:
             self.result_label.config(text="No runs found")
 
+  
     def average_distance(self):
-        """"find average distance of all runs and display it"""
+        """find average distance of all runs and display it"""
         avg = self.app.average_distance()
+
+        if avg == 0:
+            self.result_label.config(text="No runs available")
+            return
+
         self.result_label.config(text=f"Average distance: {round(avg, 2)} km")
 
+        
     def search_by_date(self):
         """search runs by date and display them"""
         date = self.date_entry.get()
@@ -265,9 +272,15 @@ class RunGUI:
         tk.Label(window, text=f"Speed: {round(speed, 2)} km/h").pack(pady=5)
 
     def show_graph(self):
-        """show a graph of all runs"""""
+        """show a graph of all runs"""
         runs = self.app.list_runs()
+
+        if not runs:
+            messagebox.showinfo("Info", "No runs to display")
+            return
+
         show_distance_graph(runs)
+
 
     def show_selected_pace(self):
         """show a graph of pace for the selected run"""
@@ -276,21 +289,27 @@ class RunGUI:
             messagebox.showerror("Error", "Select a run first")
             return
 
-        index = selection[0]
-        run = self.runs[index]
+        if not self.runs:
+            messagebox.showinfo("Info", "No runs to display")
+            return
 
+        run = self.runs[selection[0]]
         show_selected_pace_graph(run)
+
 
     def show_graph_with_selected(self):
         """show a graph of all runs with the selected run highlighted"""
         runs = self.app.list_runs()
 
+        if not runs:
+            messagebox.showinfo("Info", "No runs to display")
+            return
+
         selection = self.listbox.curselection()
         selected_id = None
 
         if selection:
-            index = selection[0]
-            selected_id = self.runs[index].id
+            selected_id = self.runs[selection[0]].id
 
         show_graph_with_highlight(runs, selected_id)
 

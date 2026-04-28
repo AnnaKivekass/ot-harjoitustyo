@@ -84,13 +84,13 @@ class RunApp:
         """return average pace in all runs"""
         runs_list = self.list_runs()
         if not runs_list:
-            return None
+            return 0
 
         distance_total = sum(run.distance for run in runs_list)
         minutes_total = sum(run.minutes for run in runs_list)
 
         if distance_total == 0:
-            return None
+            return 0
 
         return minutes_total / distance_total
 
@@ -114,7 +114,7 @@ class RunApp:
         """return average distance"""
         runs_list = self.list_runs()
         if not runs_list:
-            return None
+            return 0
 
         return self.distance_total() / len(runs_list)
 
@@ -136,6 +136,6 @@ class RunApp:
             try:
                 return datetime.strptime(run.date, "%d.%m.%Y")
             except ValueError:
-                return datetime.min 
+                return datetime.min
 
         return sorted(runs, key=safe_date)
