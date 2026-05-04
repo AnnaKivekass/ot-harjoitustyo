@@ -135,7 +135,7 @@ class RunApp:
         def safe_date(run):
             try:
                 return datetime.strptime(run.date, "%d.%m.%Y")
-            except ValueError:
-                return datetime.min
+            except (ValueError, TypeError):
+                return datetime.max
 
         return sorted(runs, key=safe_date)
