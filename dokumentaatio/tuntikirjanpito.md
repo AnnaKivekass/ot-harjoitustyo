@@ -19,5 +19,5 @@
 | 26.4 (su) | 1h | Bugin korjaaminen |
 | 27.4 (ma) | 1h | Dokumentaatio, testit |
 | 28.4 (ti) | 3h | Graafin toiminnallisuuksien parantaminen, validointi RunAppiin, bugin korjaaminen |
-
-**Yhteensä: 33,5 h**
+| 4.5 (ma) | 2h | Virheellisten päivämäärien validointi, testausdokumentti|
+**Yhteensä: 35,5 h**

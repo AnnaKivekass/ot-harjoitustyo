@@ -35,7 +35,7 @@ poetry run invoke coverage-report
 ```
 ---
 
-- Sovelluksen pylint raportin saa komennolla
+- .pylintrc-tiedoston määrittämät tarkistukset suoritetaan komennolla
 
 ```
 poetry run invoke lint
@@ -44,11 +44,11 @@ poetry run invoke lint
 --- 
 
 ## Dokumentaatio
+- [Käyttö- ja Asennusohje](dokumentaatio/asennus%20ja%20käyttöohje.md)
 - [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
 - [Changelog](dokumentaatio/changelog.md)
 - [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
-- [Asennusohje](dokumentaatio/asennus%20ja%20käyttöohje.md)
 - [Testausdokumentti](dokumentaatio/testaus.md)
 - [Release](https://github.com/AnnaKivekass/ot-harjoitustyo/releases/tag/viikko6)
 
