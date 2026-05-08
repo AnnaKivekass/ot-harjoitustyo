@@ -20,4 +20,5 @@
 | 27.4 (ma) | 1h | Dokumentaatio, testit |
 | 28.4 (ti) | 3h | Graafin toiminnallisuuksien parantaminen, validointi RunAppiin, bugin korjaaminen |
 | 4.5 (ma) | 2h | Virheellisten päivämäärien validointi, testausdokumentti|
-**Yhteensä: 35,5 h**
+| 8.5 (pe) | 1h | Dokumentaation viimeistely ja sovelluksen tarkistaminen ennen viimeistä palautusta|
+**Yhteensä: 36,5 h**
