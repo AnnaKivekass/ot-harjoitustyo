@@ -123,7 +123,7 @@ Sovelluksessa on mahdollista luoda graafit
 
 **Selected pace** kuvaaja näyttää vauhdin valitusta juoksusuorituksesta
 
-**Graph + Higlight** näyttää näyttää kuvaajan kaikkien tallennettujen juoksujen matkoista ja valittu suoritus on korostettu punaisella pisteellä kuvaajassa
+**Graph + Highlight** näyttää näyttää kuvaajan kaikkien tallennettujen juoksujen matkoista ja valittu suoritus on korostettu punaisella pisteellä kuvaajassa
 
 
 ## Tietojen tallennus
