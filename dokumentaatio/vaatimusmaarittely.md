@@ -34,7 +34,7 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - päivämäärällä voi hakea juoksusuoritusta [tehty]
 - juoksujen lajittelu matkan ja päivämäärän perusteella [tehty]
 - juoksujen tarkastelu graafisesti matplotlibillä [tehty]
-- popup joka näyttää juoksusuoritusten tarkemmat tiedot
+- popup joka näyttää juoksusuoritusten tarkemmat tiedot [tehty]
 - syötteiden validointi, jotta virheellisiä arvoja ei tulisi [tehty]
 - lisättyjen juoksujen muokkaus [tehty]
 - käyttöliittymän kehittäminen graafiseksi [tehty]
@@ -43,8 +43,12 @@ Sovelluksessa on yhdenlaisia käyttäjiä:
 - käyttäjälle ilmoitus, jos kuvaajaa ei voida muodostaa ilman dataa [tehty]
 - keskiarvojen käsittely tilanteessa, jossa suorituksia ei ole [tehty]
 - päivämäärän käsittelyn ja lajittelun parantaminen [tehty]
+---
 
 ### Jatkokehitysideat
 
+- kirjautumissivu
+- juoksujen suodattaminen useamman ehdon perusteella
+- tarkemmat tilastot, esimerkiksi kuukausikohtaiset yhteenvedot
 
 
