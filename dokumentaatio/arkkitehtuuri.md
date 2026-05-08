@@ -71,7 +71,7 @@ Käyttäjä voi käyttöliittymän kautta:
 - hakea suorituksia päivämäärän perusteella
 
 ---
-- Käyttöliittymä ei sisällä sovelluslogiikkaa, vaan kutsuu RunApp luokasta metodeja.
+- Käyttöliittymä kutsuu RunApp luokasta metodeja. Käyttöliittymä sisältää jonkin verran sovelluslogiikkaa, kuten syötteiden validointia ja tulosten muotoilua. Pääasiallinen logiikka on kuitenkin keskitetty RunApp-luokkaan.
 ---
 
 ## Sovelluslogiikka RunApp
@@ -167,3 +167,9 @@ sequenceDiagram
 ---
 
 ## Ohjelman rakenteeseen jääneet heikkoudet:
+
+ - syötteiden validointi on hajautettu käyttöliittymän ja sovelluslogiikan välillä, eikä sitä ole täysin keskitetty
+ - käyttöliittymä sisältää jonkin verran sovelluslogiikkaa kuten syötteiden validointia
+ - tietokantakerros on melko yksinkertainen
+ - virheenkäsittely kerrosten välillä on rajallista
+ 
